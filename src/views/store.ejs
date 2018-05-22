@@ -1,0 +1,61 @@
+<% include partials/_header %>
+
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-md-7">
+      <div id="scroll">
+       <div class="table-responsive">
+        <table class="table table-hover table-striped table-condensed">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Manager ID</th>
+              <th>Address ID</th>
+              <th>Last Update</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if (data) { %>
+              <% for (var i = 0; i < data.length; i++) { %>
+                <tr>
+                  <td><%= (i + 1) %></td> <!-- esta etiqueta es solo para ver el numero de la fila en la tabla-->
+                  <td><%= data[i].manager_staff_id %></td>
+                  <td><%= data[i].address_id %></td>
+                  <td><%= data[i].last_update %></td>
+                  <td>
+                    <a href="/delete/<%= data[i].id %>" class="btn btn-sm btn-danger btn-block">Delete </a>
+                    <a href="/update/<%= data[i].id %>" class="btn btn-sm btn-info btn-block">Update</a>
+                  </td>
+                </tr>
+              <% } %>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+     </div>
+    </div>
+    <div class="col-md-5">
+      <!--div class="card">
+        <div class="card-body"-->
+          <form action="/add" method="post">
+            <div class="form-group">
+              <input type="text" name="manager_staff_id" placeholder="Manager ID" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="text" name="address_id" placeholder="Address ID" class="form-control">
+            </div>
+            <!--div class="form-group">
+              <input type="text" name="last_update" placeholder="Last update" class="form-control">
+            </div-->
+            <button type="submit" class="btn btn-primary">
+              Save store
+            </button>
+          </form>
+        <!--/div>
+      </div-->
+    </div>
+  </div>
+</div>
+
+<% include partials/_footer %>
