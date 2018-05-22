@@ -1,2 +1,4 @@
-# Crud-NodeJS-Mysql
-Crud made in Node JS linked to the mysql engine.
+# Crud NodeJS Mysql
+Crud made in NodeJS linked to the mysql engine.
+
+Tester database: sakila.
