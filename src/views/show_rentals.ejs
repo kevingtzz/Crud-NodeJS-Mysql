@@ -1,0 +1,101 @@
+<% include partials/_header %>
+<style media="screen">
+  .scrollable {
+    display: block;
+    height: 400px;
+    width: 1100px;
+    overflow: scroll;
+    table-layout: fixed;
+    border-collapse: collapse;
+  }
+</style>
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-md-20">
+      <div class="scrollable">
+        <table class="table table-hover table-striped table-condensed text-center">
+          <thead>
+            <tr>
+              <th>Rental ID</th>
+              <th>Rental date</th>
+              <th>Inventory ID</th>
+              <th>Customer ID</th>
+              <th>Return date</th>
+              <th>Staff ID</th>
+              <th>Last update</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if (data) { %>
+              <% for (var i = 0; i < data.length; i++) { %>
+                <tr>
+                  <td><%= data[i].rental_id %></td>
+                  <td><%= data[i].rental_date %></td>
+                  <td><%= data[i].inventory_id %></td>
+                  <td><%= data[i].customer_id %></td>
+                  <td><%= data[i].return_date %></td>
+                  <td><%= data[i].staff_id %></td>
+                  <td><%= data[i].last_update %></td>
+                  <td>
+                    <a href="/delete_staff/<%= data[i].rental_id %>" class="btn btn-sm btn-danger btn-block">Delete </a>
+                    <a href="/update_staff/<%= data[i].rental_id %>" class="btn btn-sm btn-info btn-block">Update</a>
+                  </td>
+                 </tr>
+                <% } %>
+              <% } %>
+            </tbody>
+           </table>
+          </div>
+         </div>
+        </div>
+       </form>
+      </div>
+      <div class="container">
+        <div class="row mt-4">
+        <a href="#btn_add_staff" class="btn btn-primary" data-toggle="modal" >Add staff</a>
+        <div class="modal fade mt-5" id="btn_add_staff">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <!--Window header-->
+              <div class="modal-header">
+                <h4 class="modal-title">Add new staff</h4>
+              </div>
+                <!--Window content-->
+                <div class="modal-body">
+                  <form action="/add_staff" method="post">
+                    <div class="form-group">
+                      <input type="text" name="first_name" placeholder="First name" class="form-control">
+                    </div>
+                    <div class="form-group">
+                      <input type="text" name="last_name" placeholder="Last name" class="form-control">
+                    </div>
+                      <div class="form-group">
+                        <input type="text" name="address_id" placeholder="Address ID" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <input type="text" name="email" placeholder="Email" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <input type="text" name="store_id" placeholder="Store ID" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <input type="text" name="active" placeholder="Active" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <input type="text" name="username" placeholder="Username" class="form-control">
+                      </div>
+                      <div class="modal-footer">
+                        <button class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                      </div>
+                  </form>
+                  <!--Window footer-->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<% include partials/_footer %>

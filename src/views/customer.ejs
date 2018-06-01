@@ -1,0 +1,137 @@
+<% include partials/_header %>
+<style media="screen">
+  .scrollable {
+    position: relative;
+    display: block;
+    height: 400px;
+    width: 1100px;
+    overflow: scroll;
+    table-layout: fixed;
+    border-collapse: collapse;
+  }
+  #btn_add_customer{
+    color: #000;
+  }
+</style>
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-md-20">
+      <div class="scrollable">
+        <table class="table table-hover table-striped table-condensed text-center">
+          <thead>
+            <tr>
+              <th>ID customer</th>
+              <th>Firt name</th>
+              <th>Last name</th>
+              <th>Email</th>
+              <th>Store ID</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!--Data is a array with all mysql data inside, go through normal with for-->
+            <% if (data) { %>
+              <% for (var i = 0; i < data.length; i++) { %>
+                <tr>
+                  <td><%= data[i].customer_id %></td>
+                  <td><%= data[i].first_name %></td>
+                  <td><%= data[i].last_name %></td>
+                  <td><%= data[i].email %></td>
+                  <td><%= data[i].store_id %></td>
+                  <td>
+                    <a href="/delete_customer/<%= data[i].customer_id %>" class="btn btn-sm btn-danger btn-block">Delete</a>
+                    <a href="/update_customer/<%= data[i].customer_id %>" class="btn btn-sm btn-info btn-block">Update</a>
+                    <!--a href="#btn_update_customer" class="btn btn-sm btn-info btn-block" data-toggle="modal" >Update</a>
+                    <div class="modal fade mt-5" id="btn_update_customer">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <!--Window header-->
+                          <!--div class="modal-header">
+                            <h4 class="modal-title">Update customer</h4>
+                          </div>
+                            <!--Window content-->
+                            <!--div class="modal-body">
+                              <form action="/update_customer/<%= data[i].customer_id %>" method="post">
+                                <div class="form-group">
+                                  <input type="text" name="store_id"  value="/update/<%= data[i].customer_id %>" placeholder="Store ID" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                  <input type="text" name="first_name" placeholder="Firt name" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                  <input type="text" name="last_name" placeholder="Last name" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                  <input type="text" name="email" placeholder="Email" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                  <input type="text" name="address_id" placeholder="Address ID" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                  <input type="text" name="active" placeholder="Active" class="form-control">
+                                </div>
+                                  <div class="modal-footer">
+                                    <button class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button class="btn btn-primary" type="submit">Submit</button>
+                                  </div>
+                              </form>
+                              <!--Window footer-->
+                            <!--/div>
+                          </div>
+                        </div>
+                      </div-->
+                  </td>
+                 </tr>
+                <% } %>
+              <% } %>
+            </tbody>
+           </table>
+          </div>
+         </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row mt-4">
+        <a href="#btn_add_customer" class="btn btn-primary" data-toggle="modal" >Add customer</a>
+        <div class="modal fade mt-5" id="btn_add_customer">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <!--Window header-->
+              <div class="modal-header">
+                <h4 class="modal-title">Add new customer</h4>
+              </div>
+                <!--Window content-->
+                <div class="modal-body">
+                  <form action="/add_customer" method="post">
+                    <div class="form-group">
+                      <input type="text" name="store_id" placeholder="Store ID" class="form-control">
+                    </div>
+                    <div class="form-group">
+                      <input type="text" name="first_name" placeholder="First name" class="form-control">
+                    </div>
+                      <div class="form-group">
+                        <input type="text" name="last_name" placeholder="Last name" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <input type="text" name="address_id" placeholder="Address ID" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <input type="text" name="email" placeholder="Email" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <input type="text" name="active" placeholder="Active" class="form-control">
+                      </div>
+                      <div class="modal-footer">
+                        <button class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                      </div>
+                  </form>
+                  <!--Window footer-->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<% include partials/_footer %>

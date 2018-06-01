@@ -1,0 +1,38 @@
+<% include partials/_header %>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-5">
+      <div class="card">
+        <div class="card-body">
+          <form action="/update_staff/<%= data.staff_id %>" method="post">
+          <div class="form-group">
+            <input type="text" name="first_name" value="<%= data.first_name %>" placeholder="First name" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="text" name="last_name" value="<%= data.last_name %>" placeholder="Last name" class="form-control">
+          </div>
+            <div class="form-group">
+              <input type="text" name="address_id" value="<%= data.address_id %>" placeholder="Address ID" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="text" name="email" value="<%= data.email %>" placeholder="Email" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="text" name="store_id" value="<%= data.store_id %>" placeholder="Store ID" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="text" name="active" value="<%= data.active %>" placeholder="Active" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="text" name="username" value="<%= data.username %>" placeholder="Username" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Update customer</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% include partials/_footer %>

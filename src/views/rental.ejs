@@ -1,0 +1,86 @@
+<% include partials/_header %>
+<style media="screen">
+  .scrollable {
+    display: block;
+    height: 400px;
+    width: 1100px;
+    overflow: scroll;
+    table-layout: fixed;
+    border-collapse: collapse;
+  }
+</style>
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-md-20">
+      <div class="scrollable">
+        <table class="table table-hover table-striped table-condensed text-center">
+          <thead>
+            <tr>
+              <th>Customer ID</th>
+              <th>Store ID</th>
+              <th>First name</th>
+              <th>Last name</th>
+              <th>Email</th>
+              <th>films rented</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if (data) { %>
+              <% for (var i = 0; i < data.length; i++) { %>
+                <tr>
+                  <td><%= data[i].customer_id %></td>
+                  <td><%= data[i].store_id %></td>
+                  <td><%= data[i].first_name %></td>
+                  <td><%= data[i].last_name %></td>
+                  <td><%= data[i].email %></td>
+                  <td><%= data[i].no_rents %></td>
+                  <td>
+                    <a href="/list_individual_rental/<%= data[i].customer_id %>" class="btn btn-sm btn-info btn-block">Show rentals</a>
+                  </td>
+                 </tr>
+                <% } %>
+              <% } %>
+            </tbody>
+           </table>
+          </div>
+         </div>
+        </div>
+       </form>
+      </div>
+      <div class="container">
+        <div class="row mt-4">
+        <a href="#btn_add_rental" class="btn btn-primary" data-toggle="modal" >Add rental</a>
+        <div class="modal fade mt-5" id="btn_add_rental">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <!--Window header-->
+              <div class="modal-header">
+                <h4 class="modal-title">Add new rental</h4>
+              </div>
+                <!--Window content-->
+                <div class="modal-body">
+                  <form action="/add_rental" method="post">
+                      <div class="form-group">
+                        <input type="text" name="inventory_id" placeholder="Inventory ID" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <input type="text" name="customer_id" placeholder="Customer ID" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <input type="text" name="staff_id" placeholder="Staff ID" class="form-control">
+                      </div>
+                      <div class="modal-footer">
+                        <button class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                      </div>
+                  </form>
+                  <!--Window footer-->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<% include partials/_footer %>
